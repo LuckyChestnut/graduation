@@ -1,0 +1,61 @@
+<!--添加页-->
+<%-include ../include/header.html%>
+<link rel="stylesheet" href="../../public/lib/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="/css/detail.css">
+<%-include ../include/middle.html%>
+
+<div class="detail_box">
+    <!--选择信纸-->
+    <div class="brush">
+        信纸 ：
+        <ul>
+            <li><img src="/images/xinzhi03.jpg" alt="图片"></li>
+            <li><img src="/images/xinzhi04.jpg" alt="图片"></li>
+            <li><img src="/images/xinzhi05.jpg" alt="图片"></li>
+            <li><img src="/images/xinzhi06.jpg" alt="图片"></li>
+            <li><img src="/images/xinzhi07.jpg" alt="图片"></li>
+            <li><img src="/images/xinzhi08.jpg" alt="图片"></li>
+            <li><img src="/images/xinzhi09.jpg" alt="图片"></li>
+            <li><img src="/images/xinzhi10.jpg" alt="图片"></li>
+            <li><img src="/images/xinzhi11.jpg" alt="图片"></li>
+            <li><img src="/images/xinzhi12.jpg" alt="图片"></li>
+        </ul>
+    </div>
+    <!--字体颜色-->
+    <div class="fontColor">
+        字体颜色 ：<input type="color">
+    </div>
+    <div class="detail_big">
+        <p><%=article.title%></p>
+        <%if (article.poster) {%>
+        <div class="detail_img">
+            <img src="<%=article.poster%>" alt="">
+        </div>
+        <%}%>
+        <p id="detail_content"><%=article.content%></p>
+    </div>
+    <div class="date">
+        <div>
+            <span>作者 ： <%=article.user.username%></span>
+            <span>发表时间 ：<%=article.createAt%></span>
+        </div>
+        <%if (flag) {%>
+        <div class="oper">
+            <a href="/article/update?_id=<%=article._id%>" class="btn btn-primary">编辑</a>
+            <a href="/article/remove?_id=<%=article._id%>" class="btn btn-danger">删除</a>
+        </div>
+        <%}%>
+    </div>
+
+    <div class="oper_two">
+        <a href="/article/detailup?id=<%=article.id%>">上一篇</a>
+        <a href="/article/detailnext?id=<%=article.id%>">下一篇</a>
+    </div>
+</div>
+
+<%-include ../include/middle02.html%>
+
+<%-include ../include/footer.html%>
+<script src="/js/detail.js"></script>
+
+

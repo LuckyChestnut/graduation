@@ -1,0 +1,149 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+li{
+    cursor: pointer;
+}
+a:hover {
+    cursor: pointer;
+}
+body>#bigBox{
+    width:80%;
+    height:100%;
+    margin: auto;
+    position: relative;
+}
+#one{
+    width:100%;
+    height:80px;
+    line-height: 80px;
+    /*没用的线*/
+    border:1px solid transparent;
+}
+#one>div:nth-child(1) {
+    display: inline-block;
+    width:30%;
+    height:100%;
+    float: left;
+}
+#one>div:nth-child(1)>span {
+    font-size: 40px;
+    font-family: "微软雅黑";
+    color:yellowgreen;
+    display: inline-block;
+}
+#one>div:nth-child(1)>span:nth-child(2) {
+    transform: rotate(30deg);
+    margin-left: -7px;
+}
+#one>div:nth-child(1)>span:nth-child(3) {
+    transform: rotate(-30deg);
+    margin-left: -12px;
+}
+#one>div:nth-child(1)>span:nth-child(4) {
+    transform: rotate(38deg);
+    margin-left: -5px;
+    margin-top: 5px;
+}
+#one>div:nth-child(1)>a>span.logo{
+    color:#080808;
+    font-size: 17px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin-left: 10px;
+    text-shadow: #1b6d85 1px 1px;
+}
+#one>div:nth-child(1)>a:hover{
+    text-decoration: none;
+}
+#one>ul.nav_one{
+    width:50%;
+    float: right;
+    height:80px;
+    line-height: 80px;
+}
+input,button,select,textarea{outline:none}
+#one>ul.nav_one>li{
+    display: inline-block;
+    float: left;
+}
+#one>ul.nav_one>li:not(#user):hover{
+    border-bottom: 3px solid lightsalmon;
+}
+#one>ul.nav_one>li.active{
+    border-bottom: 3px solid lightsalmon;
+}
+#one>ul.nav_one>li>a{
+    display: inline-block;
+    width:100%;
+    height:100%;
+    text-decoration: none;
+    color:sandybrown;
+    padding:0px 22px;
+}
+#one>ul.nav_one>li.head>span{
+    display: inline-block;
+    width:50px;
+    height:50px;
+    border: 1px solid #eeeeee;
+    border-radius: 50%;
+    margin:auto;
+    vertical-align: middle;
+    background-image: url('images/h1.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+#one>ul.nav_one>li.head>span>img{
+    max-width: 100%;
+    margin-top: -35px;
+}
+#two{
+    margin-top: 10px;
+}
+#fenlei{
+    color: sandybrown;
+}
+#sousuo{
+    margin-left: 130px;
+}
+#write{
+    margin-top: 10px;
+}
+/*尾部的编写*/
+#foot{
+    width:80%;
+    margin:auto;
+    height:100px;
+    line-height: 100px;
+    margin-top: 100px;
+    position: relative;
+    bottom: 30px;
+}
+#foot>div{
+    width:100%;
+    height:40px;
+    line-height: 40px;
+    text-align: center;
+}
+#foot>div.one_foot>ul>li {
+    display: inline-block;
+    padding: 5px;
+}
+#foot>div.one_foot>ul>li>a {
+    font-size: 12px;
+    color:orange;
+}
+
+#foot>div.two_foot{
+    color:#999;
+    font-size: 12px;
+}
+
+#uli a.active{
+    background: lightblue;
+}
+#uli a:hover{
+    background: lightblue;
+}

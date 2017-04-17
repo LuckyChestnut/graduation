@@ -1,0 +1,79 @@
+<!--添加页-->
+<%-include ../include/header.html%>
+<link rel="stylesheet" href="/css/add.css">
+<style>
+    #add_box>form>div#fengmian {
+        width:200px;
+        height:200px;
+        border:1px solid;
+        margin-left: 180px;
+    }
+    #add_box>form>div#fengmian>img{
+        width: 100%;
+        height: 100%;
+    }
+</style>
+<%-include ../include/middle.html%>
+
+<div id="add_box">
+
+    <form action="/article/update?_id=<%=article._id%>" method="post" enctype="multipart/form-data" id="add_form">
+        <div><span>当前播客 ：</span><span><%=userInfo.username%></span><a href="/user/login">[ 切换播客 ]</a></div>
+        <div>
+            <span>标题 ： </span>
+            <input type="text"  name="title" value="<%=article.title%>" id="title" placeholder="title" >
+        </div>
+        <div>
+            <span>文章封面 ：</span>
+            <input type="file" name="poster">
+        </div>
+        <%if(article.poster){%>
+        <div id="fengmian">
+            <img src="<%=article.poster%>" alt="">
+        </div>
+        <%}%>
+        <div class="content">
+            <span>内容 ：</span>
+            <div>
+                <span class="markdown">本播客支持 markdown 语法！</span>
+                <textarea name="content" id="content" cols="30" rows="10"><%=article.content%>"</textarea>
+            </div>
+        </div>
+        <div class="foot_biaoqian">
+            <div><span class="btn_biaoqian">选取标签</span><input  type="text" name="biaoqian" class="b_biaoqian"  value="<%=article.biaoqian%>"></div>
+            <div class="biaoqian">
+                <span>治愈</span>
+                <span>疗伤</span>
+                <span>读物</span>
+                <span>原创</span>
+                <span>睡前故事</span>
+                <span>失眠</span>
+                <span>情感</span>
+                <p class="p_biaoqian"></p>
+            </div>
+        </div>
+
+        <div id="add_tijiao">
+            <button type="submit" class="btn btn-default">保存修改</button>
+        </div>
+
+    </form>
+
+</div>
+
+<%-include ../include/middle02.html%>
+<%-include ../include/footer.html%>
+<script src="/js/add.js"></script>
+<script>
+    $(function() {
+
+        $('[name=poster]').change(function() {
+           var str =  $('[name=poster]').val();
+            var url = '/uploads/' + str.split('\\')[2];
+            console.log(url);
+            $('#fengmian').find('img').attr('src',url);
+        })
+
+    })
+</script>
+

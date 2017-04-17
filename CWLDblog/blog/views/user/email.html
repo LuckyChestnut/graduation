@@ -1,0 +1,45 @@
+<!--登陆页-->
+<%-include ../include/header.html%>
+<link rel="stylesheet" href="/css/login.css">
+<%-include ../include/middle.html%>
+
+<div id="login_box">
+    <div class="login">
+        <div class="login_cha">
+            <span> × </span>
+        </div>
+        <form class="form-horizontal" id="login_form" action="/user/email" method="post" novalidate>
+            <div class="logo_login">
+                开启失眠之旅 ....
+                <img src="/images/shimian.jpg" alt="这是一张图片">
+            </div>
+            <div class="form-group">
+                <label for="username" class="col-sm-3 control-label">邮箱 ：</label>
+                <div class="col-sm-6">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="email" required pattern="^[\w.-]+@([0-9a-zA-Z\w-]+\.)+[0-9a-zA-Z]{2,8}$">
+                    <b>邮箱格式！如 ： xiaocui@qq.com</b>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-3 control-label">密码 ：</label>
+                <div class="col-sm-6">
+                    <input type="password" class="form-control" pattern='\w{6,16}' name="password" id="inputPassword3" placeholder="Password" required>
+                    <b>密码由6-16位字母数字下划线组成！</b>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10" id="login_tijao">
+                    <button type="submit" class="btn btn-default">登 陆</button>
+                </div>
+            </div>
+        </form>
+        <div id="xuanze">
+            <span>其他登陆方式 ：</span>
+            <a href="/user/login">用户名登陆</a>
+        </div>
+    </div>
+</div>
+
+<%-include ../include/middle02.html%>
+<%-include ../include/footer.html%>
+<script src="/js/login.js"></script>

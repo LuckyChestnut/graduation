@@ -1,0 +1,75 @@
+<%-include include/header.html%>
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/css/index01.css">
+<%-include include/middle.html%>
+<div id="index_box">
+    <!--每日推荐部分-->
+    <div id="tuijian">
+        <div>
+            <p>每日精选推荐</p>
+            <img src="/images/tuijian02.jpg" alt="logo">
+        </div>
+        <div class="yilong">
+            <ul>
+                <%article.forEach(function(article,index){%>
+                <li>
+                    <div class="up">
+                        <div style="background-image: url('<%=article.poster%>')">
+                            <p><a href="article/detail?id=<%=article._id%>"><%=article.title%></a></p>
+                            <p><%=article.content%></p>
+                            <p>作者 ：<%=article.user.username%></p>
+                        </div>
+                    </div>
+                    <div style="background: url('/images/yi01.jpg')no-repeat 0px -55px/347px"></div>
+                </li>
+                <%})%>
+            </ul>
+        </div>
+    </div>
+
+    <!--列表部分-->
+    <div class="index_list">
+        <p id="index_t">
+            <span>每日精选推荐</span>
+            <img src="/images/tuijian02.jpg" alt="logo">
+        </p>
+        <div class="index_big">
+            <%articles.forEach(function(article,index) {%>
+            <div class="every">
+                <div class="index_logo">
+                    <img src="/images/liebiao.jpg" alt="logo" id="img">
+                </div>
+                <div class="middle">
+                    <p><a href="article/detail?id=<%=article._id%>">题目 : <%=article.title%></a></p>
+                    <p><img src="<%=article.poster%>" alt=""></p>
+                    <p>标签 : <%=article.biaoqian%></p>
+                    <div><p>作者 : <%=article.user.username%></p></div>
+                </div>
+            </div>
+            <%})%>
+        </div>
+    </div>
+
+    <!--分页部分-->
+    <nav id="fen">
+        <ul class="pagination">
+            <li>
+                <a href="/?keyword=<%=keyword%>&pageNum=<%=(pageNum>1)?pageNum-1:1%>" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <%for(var i=1;i<=totalPage;i++) {%>
+            <li class="<%=(pageNum==i?'active':'')%>"><a href="/?pageNum=<%=i%>"><%=i%></a></li>
+            <%}%>
+            <li>
+                <a href="/?keyword=<%=keyword%>&pageNum=<%=(pageNum<totalPage)?parseInt(pageNum)+1:totalPage%>" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+</div>
+<%-include include/middle02.html%>
+<%-include include/footer.html%>
+<script src="/js/index.js"></script>

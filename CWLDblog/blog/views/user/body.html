@@ -1,0 +1,641 @@
+<!--注册页-->
+<%-include ../include/header.html%>
+<style>
+    body{
+        background: url("/images/kongjian01.jpg") 0px 0px /100%;
+    }
+    #body{
+        width:100%;
+        padding:20px;
+        border:1px solid wheat;
+        position: relative;
+        overflow: hidden;
+        background: rgba(0,0,0,.1);
+    }
+    /*侧边栏*/
+    #body>.body_nav{
+        width: 180px;
+        padding:20px;
+        position: fixed;
+        top:250px;
+        left:150px;
+        border:1px solid transparent;
+        background: rgba(0,0,0,.2);
+        border-radius: 10px;
+        display: none;
+    }
+    /*li共有的样式*/
+    #body>.body_nav>ul>li{
+        list-style: none;
+        width: 100%;
+        height:60px;
+        line-height:60px;
+        text-align: left;
+        border: 1px solid transparent;
+    }
+    #body>.body_nav>ul>li>a{
+        margin-left: 20px;
+        color:#0f0f0f;
+        font-size: 14px;
+        font-weight: bold;
+        background-image: url('');
+        background-size: cover;
+        background-position: center center;
+        font-family: "微软雅黑";
+    }
+    /*头像*/
+    #body>.body_nav>ul>li.head01{
+        width:100%;
+        height:100px;
+        background: url("/images/kongjian01.jpg")no-repeat 0px 0px /100% 100%;
+        border-radius: 10px;
+        border: 2px solid #fff;
+    }
+    #body>.body_nav>ul>li.head01>a{
+        display:block;
+        width:40%;
+        height:55%;
+        margin: 20px auto;
+        border-radius: 30px;
+        overflow: hidden;
+    }
+    #body>.body_nav>ul>li.head01>a>img{
+        width: 100%;
+        height:100%;
+    }
+    /*右边*/
+    #body>.body_box{
+        width:100%;
+        padding:20px;
+        float: right;
+    }
+
+    /*修改个人资料*/
+    #body>.body_box>.body_userInfo{
+        width:100%;
+        padding:20px;
+    }
+    #body>.body_box>.body_userInfo>div{
+        width: 100%;
+        padding-bottom: 15px;
+        border-bottom: 1px solid olive;
+    }
+    #body>.body_box>.body_userInfo>div>span{
+        color:#211F1F;
+        font-size: 18px;
+    }
+    #body>.body_box>.body_userInfo>div>img{
+        width: 45px;
+        height:45px;
+        border-radius: 10px;
+        margin-left: 20px;
+    }
+    /*修改资料的form*/
+    form#body_userInfo{
+        width:95%;
+        margin: auto;
+        margin-top: 15px;
+    }
+    #body_userInfo>div{
+        width:100%;
+        height:40px;
+        line-height: 40px;
+        position: relative;
+        margin-top: 15px;
+    }
+    #body_userInfo>div>span{
+        display: inline-block;
+        width:130px;
+        text-align: right;
+        font-weight: bold;
+        color:#3211F1F;
+    }
+    #body_userInfo>div>input{
+        height:30px;
+        outline: none;
+        border-radius: 10px;
+        margin:0px 20px;
+        padding-left: 10px;
+        display: inline-block;
+    }
+    #body_userInfo>div.xiu_head{
+        width: 50px;
+        height:50px;
+        border: 1px solid #fff;
+        border-radius: 10px;
+        margin: 10px 0px 10px 160px;
+        overflow: hidden;
+    }
+    #body_userInfo>div.xiu_head>img{
+        width: 100%;
+        height: 100%;
+    }
+    #body_userInfo>div.end{
+        text-align: right;
+        padding-right: 50px;
+    }
+    label{
+        width:60px;
+        height:40px;
+        position: absolute;
+        left:150px;
+        text-align: right;
+        background: none;
+    }
+    #body_userInfo>div>input#girl{
+        vertical-align: middle;
+        margin-left: 20px;
+    }
+    #body_userInfo>div>input#boy{
+        margin-left: 70px;
+        vertical-align: middle;
+    }
+    label#la_boy {
+        left:250px;
+        background:none;
+    }
+    /*上传图片*/
+    #body_userInfo>div.file>input{
+        border: none;
+    }
+
+    /*主体的修改*/
+    #body>.body_box>.body_back{
+        width: 100%;
+        padding: 20px;
+    }
+    #body>.body_box>.body_back>div.one{
+        width: 100%;
+        padding-bottom: 15px;
+        border-bottom: 1px solid olive;
+    }
+    #body>.body_box>.body_back>div.one>span{
+        color:#211F1F;
+        font-size: 18px;
+    }
+    #body>.body_box>.body_back>div.one>img{
+        width: 45px;
+        height:45px;
+        border-radius: 10px;
+        margin-left: 20px;
+    }
+
+    /*背景图片*/
+    #body>.body_box>.body_back>.brush {
+        width:90%;
+        margin: auto;
+        margin-top: 20px;
+    }
+    #body>.body_box>.body_back>.brush>ul{
+        display: inline-block;
+        vertical-align: top;
+        width: 83%;
+    }
+    #body>.body_box>.body_back>.brush>ul.yin{
+        height:80px;
+        overflow: hidden;
+    }
+    #body>.body_box>.body_back>.brush>ul>li{
+        margin-top: 10px;
+        margin-right: 15px;
+        display: inline-block;
+        width:50px;
+        height:60px;
+        border-radius: 5px;
+        border: 1px solid;
+    }
+    #body>.body_box>.body_back>.brush>ul>li>img{
+        width: 100%;
+        height: 100%;
+        vertical-align: middle;
+    }
+    #body>.body_box>.body_back>.brush>span{
+        display: inline-block;
+        font-size: 14px;
+        font-weight: bold;
+        width:107px;
+        height:80px;
+        line-height: 80px;
+    }
+    #body>.body_box>.body_back>.brush>span:hover{
+        cursor: pointer;
+    }
+    #body>.body_box>.body_back>#pic>.end{
+        width: 100%;
+        text-align: right;
+        padding-right: 70px;
+        margin-top: 20px;
+    }
+    /*自定义图片*/
+    #body>.body_box>.body_back>#pic{
+        padding-left: 42px;
+        font-size: 14px;
+        font-weight: bold;
+    }
+    #body>.body_box>.body_back>#pic>input{
+        display: inline-block;
+    }
+
+    /*用户文章列表*/
+    #body>.body_box>#body_list{
+        width: 100%;
+        padding: 20px;
+    }
+    #body>.body_box>#body_list>div.one{
+        width: 100%;
+        padding-bottom: 15px;
+        border-bottom: 1px solid olive;
+    }
+    #body>.body_box>#body_list>div.one>span{
+        color:#211F1F;
+        font-size: 18px;
+    }
+    #body>.body_box>#body_list>div.one>img{
+        width: 45px;
+        height:45px;
+        border-radius: 10px;
+        margin-left: 20px;
+    }
+
+    /*列表部分*/
+    #body>.body_box>#body_list>.body_artList{
+        margin-top: 30px;
+    }
+    #body>.body_box>#body_list>.body_artList>.you{
+        width:100%;
+        height:260px;
+        display: inline-block;
+        border: 2px solid #AE81FF;
+        border-radius: 10px;
+        background: rgba(89,48,98,0.2);
+        margin-top: 25px;
+        position: relative;
+    }
+    #body>.body_box>#body_list>.body_artList>div>span:nth-child(1) {
+        display: inline-block;
+        width: 100%;
+        padding-left: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: left;
+        height:40px;
+        line-height: 40px;
+        background-color: #8B6C8B;
+        border-radius: 8px;
+    }
+    /*编辑 删除键*/
+    #body>.body_box>#body_list>.body_artList>.you>div.bian_p{
+        width: 100px;
+        position: absolute;
+        right: 0px;
+        top:3px;
+        text-align: center;
+        color:#fff;
+        font-weight: bold;
+        font-size: 20px;
+    }
+    #body>.body_box>#body_list>.body_artList>.you>div.bian_p>div {
+        margin-top: 10px;
+        background-color: #f7f7f7;
+        border-radius: 5px;
+        display: none;
+    }
+    #body>.body_box>#body_list>.body_artList>.you>div.bian_p>div>a{
+        display: block;
+        height:40px;
+        line-height: 40px;
+        font-size: 14px;
+    }
+    #body>.body_box>#body_list>.body_artList>div>span:nth-child(1)>a{
+        color:#32363E;
+        text-decoration: none;
+    }
+    #body>.body_box>#body_list>.body_artList>div>textarea{
+        width: 100%;
+        height:170px;
+        background-color: transparent;
+        overflow-y: hidden;
+        padding:15px;
+        color:#222;
+    }
+    #body>.body_box>#body_list>.body_artList>div>span:last-child {
+        display: inline-block;
+        width: 100%;
+        height:40px;
+        line-height: 40px;
+        border: 1px solid;
+        text-align: left;
+        padding-left: 20px;
+        font-weight: bold;
+        color:orange;
+        background-color: #E5D1E5;
+        border-radius: 8px;
+    }
+    #body>.body_box>#body_list>.body_artList>div#jing{
+        display: none;
+    }
+
+    /*top*/
+    #top{
+        width: 80px;
+        height:80px;
+        border:1px solid #fff;
+        text-align: center;
+        padding-top: 5px;
+        background-color: #f7e1b5;
+        border-radius: 15px;
+        position: fixed;
+        right:40px;
+        bottom:50px;
+        display: none;
+    }
+    #top>a{
+        color:#fff;
+        font-size: 20px;
+    }
+    #top>a:hover{
+        color:red;
+        text-decoration: none;
+    }
+    #top>a>span{
+        display: block;
+        font-size: 30px;
+        color:#fff;
+    }
+</style>
+<%-include ../include/middle.html%>
+<div id="background"></div>
+<div id="body">
+    <div class="body_nav">
+        <ul>
+            <%if(userInfo.pic){%>
+            <li class="head01" style="background: url('<%=userInfo.pic%>') 0px 0px/100% 100%">
+            <%} else {%>
+            <li class="head01" >
+            <%}%>
+                <a href="" style="background-image:url('<%=userInfo.poster%>')"></a>
+            </li>
+            <li><a href=""><%=userInfo.username%></a></li>
+            <li><a href="#body_list">我的文章</a></li>
+            <li><a href="#body_userInfoOne">修改个人资料</a></li>
+            <li><a href="#body_back">个性修改</a></li>
+        </ul>
+    </div>
+    <div class="body_box">
+        <!--修改个人资料-->
+        <div class="body_userInfo" id="body_userInfoOne">
+            <div>
+                <span>修改个人资料</span>
+                <img src="/images/shimian.jpg" alt="图片">
+            </div>
+            <form id="body_userInfo" action="/user/bodyUserInfo" method="post" enctype="multipart/form-data" novalidate>
+                <div>
+                    <span>用户名 ：</span>
+                    <input type="text" name="username" required  pattern='\w{6,16}' value="<%=userInfo.username%>">
+                    <b>用户名由6-16位字母数字下划线组成！</b>
+                </div>
+                <div>
+                    <span>密码 ：</span>
+                    <input type="password" name="password" required pattern='\w{6,16}' value="<%=userInfo.password%>">
+                    <b>密码由6-16位字母数字下划线组成！</b>
+                </div>
+                <div>
+                    <span>性别 ：</span>
+                    <input type="radio" class="sex" id="girl" name="sex"><label for="girl" id="la_gril">女</label>
+                    <input type="radio" class="sex" id="boy" name="sex"><label for="boy" id="la_boy">男</label>
+                </div>
+                <div class="file">
+                    <span>头像 ：</span>
+                    <input type="file"  name='poster'  id="poster" placeholder="poster">
+                </div>
+                <div class="xiu_head">
+                    <img src="<%=userInfo.poster%>" alt="">
+                </div>
+                <div>
+                    <span>邮箱 ：</span>
+                    <input type="email" name="email" value="<%=userInfo.email%>" required pattern="^[\w.-]+@([0-9a-zA-Z\w-]+\.)+[0-9a-zA-Z]{2,8}$">
+                    <b>请输入正规的邮箱</b>
+                </div>
+                <div class="end">
+                    <button class="btn btn-primary">保存</button>
+                </div>
+            </form >
+        </div>
+
+        <!--背景图片的修改-->
+        <div class="body_back" id="body_back">
+            <div class="one">
+                <span>主体修改</span>
+                <img src="/images/shimian.jpg" alt="图片">
+            </div>
+            <div class="brush">
+                <span>背景图片 ︾ ：</span>
+                <ul class="yin" id="yin">
+                    <li><img src="/images/kongjian01.jpg" alt="图片"></li>
+                    <li><img src="/images/xinzhi04.jpg" alt="图片"></li>
+                    <li><img src="/images/xinzhi05.jpg" alt="图片"></li>
+                    <li><img src="/images/xinzhi06.jpg" alt="图片"></li>
+                    <li><img src="/images/xinzhi07.jpg" alt="图片"></li>
+                    <li><img src="/images/xinzhi08.jpg" alt="图片"></li>
+                    <li><img src="/images/xinzhi09.jpg" alt="图片"></li>
+                    <li><img src="/images/xinzhi10.jpg" alt="图片"></li>
+                    <li><img src="/images/xinzhi11.jpg" alt="图片"></li>
+                    <li><img src="/images/xinzhi12.jpg" alt="图片"></li>
+                </ul>
+            </div>
+            <form action="/user/backGround" id="pic" method="post" enctype="multipart/form-data">
+                自定义图片 ：
+                <input type="text" name="pict" style="display: none" id="pict" value="no">
+                <input type="file" name="pi" id="pi">
+                <div class="end">
+                    <button class="btn btn-primary" type="submit">保存</button>
+                </div>
+            </form>
+        </div>
+
+        <!--用户文章列表-->
+        <div id="body_list"  name="body_list">
+            <div class="one">
+                <span>修修改改</span>
+                <img src="/images/shimian.jpg" alt="图片">
+            </div>
+            <div class="body_artList">
+                <%articles.forEach(function(article,index) {%>
+                <div class="you">
+                    <span><a href="/article/detail?id=<%=article._id%>"><%=article.title%></a></span>
+                    <div class="bian_p">
+                        <span>↓</span>
+                        <div>
+                            <a href="/article/update?_id=<%=article._id%>">编辑</a>
+                            <a href="/article/removeTO?id=<%=article._id%>">删除</a>
+                        </div>
+                    </div>
+                    <textarea  readonly="readonly";><%=article.content%></textarea>
+                    <span><%=article.createAt%></span>
+                </div>
+                <% })%>
+                <div id="jing" class="alert alert-warning" role="alert">
+                    亲！您还没发表过任何文章！
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!--top-->
+    <div id="top">
+        <a href="">
+            Top
+            <span>↑</span>
+        </a>
+    </div>
+</div>
+
+<%-include ../include/middle02.html%>
+
+<%-include ../include/footer.html%>
+<script>
+    $(function() {
+
+//        单选按钮被点击的时候
+        $('input[name=sex]').click(function() {
+            console.log($(this).next());
+            $(this).next()[0].style.background = ' url("/images/anniu.jpg")no-repeat -10px 7px /57% ';
+            $(this).next().siblings('label').css("background","none");
+        })
+
+//        当头像被修改的时候
+        $('div.file').change(function() {
+            var str =  $(this).find('input').val();
+            var url = '/uploads/' + str.split('\\')[2];
+            $('div.xiu_head').find('img').attr('src',url);
+        })
+
+//        点击brush 背景图片进行展示
+        $('.brush>span:nth-child(1)').click(function() {
+//            console.log($('#yin'));
+            $('#yin').toggleClass('yin');
+            if($('#yin').attr('class') == 'yin') {
+                $('.brush>span')[0].innerHTML = '背景图片 ︾ ：'
+            } else {
+                $('.brush>span')[0].innerHTML = '背景图片 ︽ ：'
+            }
+
+        });
+
+//        点击背景图片的时候整个图片跟着变换
+        $('.brush>ul>li').click(function() {
+            var url = $(this).find('img').attr('src');
+            $('body').css("background","url(" + url + ") 0px 0px /100%");
+            $('.head01').css('background','url(' + url + ')no-repeat 0px 0px/100% 100%');
+            console.log(url);
+            $('#pict')[0].value = url;
+            console.log($('#pict')[0].value);
+        })
+
+//        判断用户是否发表过文章
+        if(!$('.you') ){
+            $('#jing').css("display","block");
+        };
+
+//        向下的箭头 编辑和删除
+        $('div.bian_p').hover(function() {
+            $(this).find('div').css('display','block');
+        },function() {
+            $(this).find('div').css('display','none');
+        });
+
+//        top 键
+       /* $(window).scroll(function(event) {
+            var top = $(this).scrollTop();
+            if(top>500) {*/
+                $('#top').css('display','block');
+//                侧边栏
+                $('#body').find('.body_nav').css('display','block');
+                $('#body').find('.body_box').css('width','80%');
+                /*             } else {
+                $('#top').css('display','none');
+//                侧边栏
+                $('#body').find('.body_nav').css('display','none');
+                $('#body').find('.body_box').css('width','100%');
+           }
+        })*/
+
+
+
+    });
+
+    $(function() {
+//    表单验证
+        var oForm = document.getElementById('body_userInfo');
+        var oB = document.getElementsByTagName('b');
+//    用户名 ：
+        var username = document.querySelector('input[name=username]');
+        $(username).focus(function () {
+            $(this).next('b').css('display', 'inline-block').css('color','#999');
+            $(this).next('b')[0].innerHTML = '用户名由6-16位字母数字下划线组成！';
+        })
+        var user = false;
+        $(username).blur(function () {
+            if (username.validity.valueMissing) {
+                $(this).next('b')[0].innerHTML = '亲！这是必填项哟！';
+                $(this).next('b').css('color', 'red');
+            } else if (username.validity.patternMismatch) {
+                $(this).next('b')[0].innerHTML = '用户名由6-16位字母数字下划线组成！';
+                $(this).next('b').css('color', 'red');
+            } else {
+                $(this).next('b')[0].innerHTML = '√';
+                $(this).next('b').css({'color': 'green', fontWeight: 'blod'});
+                user = true;
+            }
+        })
+
+//        密码验证
+        var password = document.querySelector('input[name=password]');
+        $(password).focus(function () {
+            console.log('获取焦点了！');
+            $(this).next('b').css('display', 'inline-block').css('color',"#999");
+            $(this).next('b')[0].innerHTML = '密码由6-16位字母数字下划线组成！';
+        })
+        var pass = false;
+        var passOne = '';
+        $(password).blur(function () {
+            console.log('失去焦点了！');
+            if (password.validity.valueMissing) {
+                $(this).next('b')[0].innerHTML = '亲！这是必填项哟！';
+                $(this).next('b').css('color', 'red');
+            } else if (password.validity.patternMismatch) {
+                $(this).next('b')[0].innerHTML = '密码由6-16位字母数字下划线组成！';
+                $(this).next('b').css('color', 'red');
+            } else {
+                $(this).next('b')[0].innerHTML = '√';
+                $(this).next('b').css({'color': 'green', fontWeight: 'blod'});
+                pass = true;
+            }
+            passOne = password.value;
+            console.log(passOne);
+        });
+
+
+//         邮箱的验证
+        var email = document.querySelector('input[name=email]');
+        var emailFlag = false;
+        $(email).focus(function() {
+            $(this).next('b').css('display', 'inline-block').css('color',"#999");
+            $(this).next('b')[0].innerHTML = '邮箱格式！如 ：xiaocui@qq.com';
+        });
+        $(email).blur(function() {
+            if (email.validity.valueMissing) {
+                $(this).next('b')[0].innerHTML = '亲！这是必填项哟！';
+                $(this).next('b').css('color', 'red');
+            } else if (email.validity.patternMismatch) {
+                $(this).next('b')[0].innerHTML = '邮箱格式！如 ：xiaocui@qq.com';
+                $(this).next('b').css('color', 'red');
+            } else {
+                $(this).next('b')[0].innerHTML = '√';
+                $(this).next('b').css({'color': 'green', fontWeight: 'blod'});
+                emailFlag = true;
+            }
+        })
+    })
+</script>

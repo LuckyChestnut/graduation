@@ -1,0 +1,113 @@
+.detail_box{
+    width: 100%;
+    padding-top: 60px;
+    background: rgba(255,255,230,.8);
+    border-radius: 50px;
+    padding-bottom: 20px;
+}
+
+/*信纸*/
+.detail_box>.brush {
+    width:90%;
+    margin: auto;
+    height:80px;
+}
+.detail_box>.brush>ul{
+    display: inline-block;
+    vertical-align: middle;
+    width: 90%;
+    height:80px;
+}
+.detail_box>.brush>ul>li{
+    margin-top: 10px;
+    margin-right: 15px;
+    display: inline-block;
+    width:50px;
+    height:60px;
+    border-radius: 5px;
+    border: 1px solid;
+}
+.detail_box>.brush>ul>li>img{
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.detail_box>.detail_big{
+    background: url("/images/xinzhi01.jpg")no-repeat 0px 0px/100% ;
+    width:90%;
+    margin:auto;
+    height:1000px;
+    border-radius: 25px;
+}
+
+/*字体颜色*/
+.detail_box>.fontColor{
+    width:90%;
+    margin: auto;
+    height:60px;
+    line-height: 60px;
+}
+
+/*标题*/
+.detail_box>.detail_big>p:nth-child(1) {
+    height:60px;
+    line-height: 60px;
+    text-align: center;
+    font-size: 22px;
+    color:orange;
+    margin-top: 30px;
+}
+.detail_box>.detail_big>p#detail_content {
+    font-size: 16px;
+    text-align: left;
+    padding:30px;
+}
+/*图片*/
+.detail_box>div.detail_big>div.detail_img{
+    width: 70%;
+    height:200px;
+    margin: 15px auto;
+    text-align: center;
+}
+.detail_box>div.detail_big>div.detail_img>img{
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 15px;
+}
+/*作者和时间*/
+.detail_box>div.date{
+    width: 100%;
+    margin-top: 15px;
+}
+.detail_box>div.date>div:nth-child(1){
+    width:80%;
+    display: inline-block;
+    height:40px;
+    line-height: 40px;
+    text-align: left;
+    padding-left: 70px;
+    color:orange;
+}
+.detail_box>div.date>div:nth-child(1)>span {
+    margin: 0px 20px;
+}
+/*编辑和删除键*/
+.detail_box>div.date>div.oper{
+    width:15%;
+    display: inline-block;
+    margin-top: 10px;
+    text-align: center;
+}
+/*上一篇 下一篇*/
+.detail_box>div.oper_two{
+    padding-left:85px;
+    margin-top: 20px;
+}
+.detail_box>div.oper_two>a{
+    color:#999;
+    margin-right: 30px;
+}
+.detail_box>div.oper_two>a:hover {
+    cursor: pointer;
+}
